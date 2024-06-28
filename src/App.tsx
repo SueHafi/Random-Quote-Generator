@@ -1,11 +1,18 @@
-import './App.css'
+import Header from './components/Header';
+import Section from './components/Section';
+import "./App.css";
 
 function App() {
   return (
     <>
-    <div></div>
+      <div className="quote-container">
+        <div className="quote-box">
+          <Header/>
+          <Section/>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

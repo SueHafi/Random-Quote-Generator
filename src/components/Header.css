@@ -1,0 +1,30 @@
+.text-container {
+    display: flex;
+}
+
+.quotation-mark {
+    display: inline-block;
+  height: 35px;
+}
+
+.starting-quote-mark {
+    align-self: flex-start;
+}
+
+.ending-quote-mark {
+    align-self: flex-end;
+}
+
+.quote-text {
+  font-family: "Josefin Sans", sans-serif, "Times New Roman", Times, serif;
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+
+.quote-author {
+  display: flex;
+  justify-content: end;
+  font-size: 3rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
