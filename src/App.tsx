@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import endingQuoteImg from './assets/ending-quote-alt.svg';
 import startingQuoteImg from './assets/starting-quote-alt.svg';
-import twitter from './assets/twitter-icon.svg';
+import xLogo from './assets/X-logo.svg';
 
 const APIUrl = "https://api.quotable.io/random";
 
@@ -12,14 +12,14 @@ function App() {
   );
   const [author, setAuthor] = useState("Albert Einstein");
 
-  async function fetchMyAPI() {
+  async function fetchMyAPI(): Promise<void> {
     const response = await fetch(APIUrl);
     const result = await response.json();
     setQuote(result.content);
     setAuthor(result.author);
   }
 
-  function handleButtonClick() {
+  function handleButtonClick(): void {
     fetchMyAPI();
   }
 
@@ -52,10 +52,11 @@ function App() {
               className="link"
               href={`https://x.com/intent/tweet?text=${quote} By ${author}`}
               target="_blank"
+              title='Share quote on X'
             >
               <img
                 className="link-icon"
-                src={twitter}
+                src={xLogo}
                 alt="share on X"
               />
             </a>
