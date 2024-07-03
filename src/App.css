@@ -11,7 +11,6 @@ body {
   padding: 0;
   background-color: pink;
   height: 100vh;
-  width: 100%;
 }
 
 .quote-container {
@@ -26,4 +25,101 @@ body {
   width: 450px;
   padding: 20px;
   border-radius: 10px;
+}
+
+/* header related css */
+
+.text-container {
+  display: flex;
+}
+
+.quotation-mark {
+  display: inline-block;
+  height: 35px;
+}
+
+.starting-quote-mark {
+  align-self: flex-start;
+}
+
+.ending-quote-mark {
+  align-self: flex-end;
+}
+
+.quote-text {
+  display: block;
+  font-family: "Josefin Sans", sans-serif, "Times New Roman", Times, serif;
+  font-size: 3.2rem;
+  font-weight: 500;
+  align-items: center;
+  margin: 30px 5px;
+}
+
+.quote-text::before,
+.quote-text::after {
+  content: none;
+}
+
+.quote-author {
+  display: flex;
+  justify-content: end;
+  font-size: 3rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Section related css */
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links-box {
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.link:hover {
+  background-color: rgb(228, 230, 231);
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.link:active {
+  background-color: white;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.link-icon {
+  height: 45px;
+}
+
+.button {
+  font-size: 2rem;
+  border-radius: 7px;
+  background-color: white;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 5px 10px;
+}
+
+.button:hover {
+  background-color: rgb(228, 230, 231);
+  box-shadow: 3px 5px;
+}
+
+.button:active {
+  background-color: white;
+  box-shadow: none;
+  border: 1px solid black;
 }
