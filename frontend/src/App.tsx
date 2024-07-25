@@ -21,7 +21,7 @@ const APIUrl = "http://localhost:3000/random";
 type QuoteAPI = {
   author: string;
   content: string;
-}[];
+};
 
 function App() {
   const [quote, setQuote] = useState(
@@ -32,9 +32,8 @@ function App() {
   async function fetchMyAPI(): Promise<void> {
     const response = await fetch(APIUrl);
     const result = (await response.json()) as QuoteAPI;
-    const randomQuoteNum = Math.floor(Math.random() * result.length);
-    setQuote(result[randomQuoteNum].content);
-    setAuthor(result[randomQuoteNum].author);
+    setQuote(result.content);
+    setAuthor(result.author);
   }
 
 
