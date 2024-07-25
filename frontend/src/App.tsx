@@ -4,18 +4,24 @@ import endingQuoteImg from "./assets/ending-quote-alt.svg";
 import startingQuoteImg from "./assets/starting-quote-alt.svg";
 import xLogo from "./assets/X-logo.svg";
 
-const APIUrl = "https://api.quotable.io/random";
+// const APIUrl = "https://api.quotable.io/random";
+const APIUrl = "http://localhost:3000/random";
+
+// type QuoteAPI = {
+//   author: string;
+//   authorSlug: string;
+//   content: string;
+//   dateAdded: string;
+//   dateModified: string;
+//   length: number;
+//   tags: string[];
+//   _id: string;
+// };
 
 type QuoteAPI = {
   author: string;
-  authorSlug: string;
   content: string;
-  dateAdded: string;
-  dateModified: string;
-  length: number;
-  tags: string[];
-  _id: string;
-};
+}[];
 
 function App() {
   const [quote, setQuote] = useState(
@@ -26,17 +32,21 @@ function App() {
   async function fetchMyAPI(): Promise<void> {
     const response = await fetch(APIUrl);
     const result = (await response.json()) as QuoteAPI;
-    setQuote(result.content);
-    setAuthor(result.author);
+    const randomQuoteNum = Math.floor(Math.random() * result.length);
+    setQuote(result[randomQuoteNum].content);
+    setAuthor(result[randomQuoteNum].author);
   }
+
+
+
 
   function handleButtonClick(): void {
     fetchMyAPI();
   }
 
-  useEffect(() => {
-    fetchMyAPI();
-  }, []);
+  // useEffect(() => {
+  //   fetchMyAPI();
+  // }, []);
 
   const encodedQuote = encodeURIComponent(quote);
   const encodedAuthor = encodeURIComponent(author);
