@@ -8,13 +8,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 function getARandomQuote() {
-  const randomIndex= Math.floor(Math.random() * quotes.length);
+  const randomIndex = Math.floor(Math.random() * quotes.length);
   const quote = quotes[randomIndex];
   return quote;
 }
-
 
 app.get("/random", (req, res) => {
   const quote = getARandomQuote();

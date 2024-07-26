@@ -36,11 +36,12 @@ function App() {
     setAuthor(result.author);
   }
 
-
-
-
-  function handleButtonClick(): void {
+  function handleNewQuoteButtonClick(): void {
     fetchMyAPI();
+  }
+
+  function handleAddQuoteButtonClick(): void {
+    
   }
 
   // useEffect(() => {
@@ -80,9 +81,14 @@ function App() {
               <img className="link-icon" src={xLogo} alt="share on X" />
             </a>
           </div>
-          <button className="button" onClick={handleButtonClick}>
-            New quote
-          </button>
+          <div className="button-container">
+            <button className="button" onClick={handleNewQuoteButtonClick}>
+              New quote
+            </button>
+            <button className="button" onClick={handleAddQuoteButtonClick}>
+              Add quote
+            </button>
+          </div>
         </section>
       </div>
     </div>
