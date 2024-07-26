@@ -24,16 +24,17 @@ type QuoteAPI = {
 };
 
 function App() {
-  const [quote, setQuote] = useState(
-    "We cannot solve our problems with the same thinking we used when we created them."
-  );
-  const [author, setAuthor] = useState("Albert Einstein");
+  const [quote, setQuote] = useState({
+    content:
+      "We cannot solve our problems with the same thinking we used when we created them.",
+    author: "Albert Einstein",
+  });
 
+  let addQuoteButtonClicked = false;
   async function fetchMyAPI(): Promise<void> {
     const response = await fetch(APIUrl);
     const result = (await response.json()) as QuoteAPI;
-    setQuote(result.content);
-    setAuthor(result.author);
+    setQuote({content: result.content, author: result.author});
   }
 
   function handleNewQuoteButtonClick(): void {
@@ -41,15 +42,15 @@ function App() {
   }
 
   function handleAddQuoteButtonClick(): void {
-    
+    addQuoteButtonClicked = true;
   }
 
   // useEffect(() => {
   //   fetchMyAPI();
   // }, []);
 
-  const encodedQuote = encodeURIComponent(quote);
-  const encodedAuthor = encodeURIComponent(author);
+  const encodedQuote = encodeURIComponent(quote.content);
+  const encodedAuthor = encodeURIComponent(quote.author);
 
   return (
     <div className="quote-container">
@@ -61,14 +62,18 @@ function App() {
               src={startingQuoteImg}
               alt="quotation mark"
             />
-            <q className="quote-text">{quote}</q>
+            {addQuoteButtonClicked ? (
+              <input>hjdhs</input>
+            ) : (
+              <q className="quote-text">{quote.content}</q>
+            )}
             <img
               className="quotation-mark ending-quote-mark"
               src={endingQuoteImg}
               alt="quotation mark"
             />
           </div>
-          <p className="quote-author">— {author}</p>
+          <p className="quote-author">— {quote.author}</p>
         </header>
         <section className="links-container">
           <div className="links-box">
