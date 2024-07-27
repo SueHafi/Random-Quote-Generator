@@ -1,0 +1,33 @@
+
+.button-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .button {
+    font-size: 1.8rem;
+    border-radius: 7px;
+    background-color: white;
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: 4px 8px;
+  }
+  
+  .button:hover {
+    background-color: rgb(228, 230, 231);
+    box-shadow: 3px 5px;
+  }
+  
+  .button:active {
+    background-color: white;
+    box-shadow: none;
+    border: 1px solid black;
+  }
+
+  @media (min-width: 1024px) {
+    .button {
+      font-size: 2rem;
+      padding: 8px;
+      box-shadow: 5px 10px;
+    }
+  }
