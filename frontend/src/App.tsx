@@ -31,7 +31,7 @@ function App() {
       "We cannot solve our problems with the same thinking we used when we created them.",
     author: "Albert Einstein",
   });
-  const [addQuoteButtonClicked, setAddQuoteButtonClicked] = useState(false);
+  const [isOnQuotePage, setIsOnQuotePage] = useState(true);
 
   async function fetchMyAPI(): Promise<void> {
     const response = await fetch(APIUrl);
@@ -43,16 +43,8 @@ function App() {
     fetchMyAPI();
   }
 
-  function handleAddQuoteButtonClick(): void {
-    setAddQuoteButtonClicked(!addQuoteButtonClicked);
-  }
-
-  function handleSubmitButtonClick(): void {
-
-  }
-
-  function handleCancelButtonClick(): void {
-
+  function handleChangePageButtonClick(): void {
+    setIsOnQuotePage(!isOnQuotePage);
   }
 
   // useEffect(() => {
@@ -64,20 +56,7 @@ function App() {
 
   return (
     <div className="quote-container">
-      {addQuoteButtonClicked ? (
-        <div className="form-container">
-          <Quote>
-            <ButtonsContainer className='making-quote-container'>
-              <button className="button" onClick={handleSubmitButtonClick}>
-                Submit
-              </button>
-              <button className="button" onClick={handleCancelButtonClick}>
-                Cancel
-              </button>
-            </ButtonsContainer>
-          </Quote>
-        </div>
-      ) : (
+      {isOnQuotePage ? (
         <div className="quote-box">
           <header>
             <div className="text-container">
@@ -110,11 +89,15 @@ function App() {
               <button className="button" onClick={handleNewQuoteButtonClick}>
                 New quote
               </button>
-              <button className="button" onClick={handleAddQuoteButtonClick}>
+              <button className="button" onClick={handleChangePageButtonClick}>
                 Add quote
               </button>
             </ButtonsContainer>
           </section>
+        </div>
+      ) : (
+        <div className="form-container">
+          <Quote onClick={handleChangePageButtonClick} />
         </div>
       )}
     </div>

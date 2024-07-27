@@ -3,6 +3,13 @@
     margin-bottom: 20px;
 }
 
+
+.form-title {
+    font-size: 2.9rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
 .label-text {
     font-size: 2rem;
     margin-right: 10px;

@@ -1,12 +1,12 @@
 import { FormEvent, ChangeEvent, useState } from "react";
-import { ReactNode } from "react";
-import './Quote.css';
+import ButtonsContainer from "./ButtonsContainer";
+import "./Quote.css";
 
 type QuoteProps = {
-  children: ReactNode;
+  onClick: () => void;
 };
 
-export default function Quote({ children}: QuoteProps) {
+export default function Quote({ onClick }: QuoteProps) {
   const [userQuoteInput, setUserQuoteInput] = useState("");
   const [userAuthorInput, setUserAuthorInput] = useState("");
 
@@ -23,9 +23,14 @@ export default function Quote({ children}: QuoteProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} aria-labelledby="add-quote-heading">
       <div className="container">
-        <label className='label-text' htmlFor="quote">Quote :</label>
+        <h2 className="form-title" id="add-quote-heading">
+          Add your own quote
+        </h2>
+        <label className="label-text" htmlFor="quote">
+          Quote :
+        </label>
         <input
           className="input-text"
           id="quote"
@@ -37,7 +42,9 @@ export default function Quote({ children}: QuoteProps) {
         />
       </div>
       <div className="container">
-        <label className='label-text author-text' htmlFor="author">Author:</label>
+        <label className="label-text author-text" htmlFor="author">
+          Author:
+        </label>
         <input
           className="input-text"
           id="author"
@@ -48,7 +55,14 @@ export default function Quote({ children}: QuoteProps) {
           value={userAuthorInput}
         />
       </div>
-      {children}
+      <ButtonsContainer className="making-quote-container">
+        <button className="button" type="submit">
+          Submit
+        </button>
+        <button type="button" className="button" onClick={onClick}>
+          Cancel
+        </button>
+      </ButtonsContainer>
     </form>
   );
 }
