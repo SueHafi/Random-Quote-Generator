@@ -3,11 +3,12 @@ import { ReactNode } from "react";
 
 type ButtonsContainerProps = {
     children: ReactNode;
+    className: string;
 }
 
-export default function ButtonsContainer({children}: ButtonsContainerProps) {
+export default function ButtonsContainer({children, className}: ButtonsContainerProps) {
   return (
-    <div className="button-container">
+    <div className={`button-container ${className}`}>
         {children}
     </div>
   );

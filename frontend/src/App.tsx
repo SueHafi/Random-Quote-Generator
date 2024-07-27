@@ -47,6 +47,14 @@ function App() {
     setAddQuoteButtonClicked(!addQuoteButtonClicked);
   }
 
+  function handleSubmitButtonClick(): void {
+
+  }
+
+  function handleCancelButtonClick(): void {
+
+  }
+
   // useEffect(() => {
   //   fetchMyAPI();
   // }, []);
@@ -57,14 +65,14 @@ function App() {
   return (
     <div className="quote-container">
       {addQuoteButtonClicked ? (
-        <div className="quote-box">
+        <div className="form-container">
           <Quote>
-            <ButtonsContainer>
-              <button className="button" onClick={handleNewQuoteButtonClick}>
+            <ButtonsContainer className='making-quote-container'>
+              <button className="button" onClick={handleSubmitButtonClick}>
                 Submit
               </button>
-              <button className="button" onClick={handleAddQuoteButtonClick}>
-                Clear
+              <button className="button" onClick={handleCancelButtonClick}>
+                Cancel
               </button>
             </ButtonsContainer>
           </Quote>
@@ -98,7 +106,7 @@ function App() {
                 <img className="link-icon" src={xLogo} alt="share on X" />
               </a>
             </div>
-            <ButtonsContainer>
+            <ButtonsContainer className="">
               <button className="button" onClick={handleNewQuoteButtonClick}>
                 New quote
               </button>

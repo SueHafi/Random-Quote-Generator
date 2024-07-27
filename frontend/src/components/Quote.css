@@ -1,0 +1,17 @@
+
+.container{
+    margin-bottom: 20px;
+}
+
+.label-text {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.author-text {
+    margin-right: 7px;
+}
+
+.input-text {
+    font-size: 1.5rem;
+}

@@ -3,6 +3,10 @@
     display: flex;
     gap: 20px;
   }
+
+.making-quote-container {
+  margin-top: 30px;
+}
   
   .button {
     font-size: 1.8rem;

@@ -28,6 +28,13 @@ body {
   margin: 0 20px;
 }
 
+.form-container{
+  background-color: white;
+  width: 320px;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 0 20px;
+}
 /* header related css */
 
 .text-container {
