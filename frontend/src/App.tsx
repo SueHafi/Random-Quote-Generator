@@ -3,7 +3,7 @@ import "./App.css";
 import endingQuoteImg from "./assets/ending-quote-alt.svg";
 import startingQuoteImg from "./assets/starting-quote-alt.svg";
 import xLogo from "./assets/X-logo.svg";
-import Quote from "./components/Quote";
+import AddQuote from "./components/AddQuote";
 import ButtonsContainer from "./components/ButtonsContainer";
 
 // const APIUrl = "https://api.quotable.io/random";
@@ -47,9 +47,9 @@ function App() {
     setIsOnQuotePage(!isOnQuotePage);
   }
 
-  // useEffect(() => {
-  //   fetchMyAPI();
-  // }, []);
+  useEffect(() => {
+    fetchMyAPI();
+  }, []);
 
   const encodedQuote = encodeURIComponent(quote.content);
   const encodedAuthor = encodeURIComponent(quote.author);
@@ -97,7 +97,7 @@ function App() {
         </div>
       ) : (
         <div className="form-container">
-          <Quote onClick={handleChangePageButtonClick} />
+          <AddQuote onClick={handleChangePageButtonClick} />
         </div>
       )}
     </div>

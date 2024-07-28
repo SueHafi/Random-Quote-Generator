@@ -1,12 +1,12 @@
 import { FormEvent, ChangeEvent, useState } from "react";
 import ButtonsContainer from "./ButtonsContainer";
-import "./Quote.css";
+import "./AddQuote.css";
 
 type QuoteProps = {
   onClick: () => void;
 };
 
-export default function Quote({ onClick }: QuoteProps) {
+export default function AddQuote({ onClick }: QuoteProps) {
   const [userQuoteInput, setUserQuoteInput] = useState("");
   const [userAuthorInput, setUserAuthorInput] = useState("");
 
