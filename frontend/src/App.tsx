@@ -5,9 +5,9 @@ import startingQuoteImg from "./assets/starting-quote-alt.svg";
 import xLogo from "./assets/X-logo.svg";
 import AddQuote from "./components/AddQuote";
 import ButtonsContainer from "./components/ButtonsContainer";
+import { APIHost } from "./utils.ts";
 
 // const APIUrl = "https://api.quotable.io/random";
-const APIUrl = "http://localhost:3000/random";
 
 // type QuoteAPI = {
 //   author: string;
@@ -34,9 +34,10 @@ function App() {
   const [isOnQuotePage, setIsOnQuotePage] = useState(true);
 
   async function fetchMyAPI(): Promise<void> {
+    const APIUrl = `${APIHost}/random`
     const response = await fetch(APIUrl);
-    const result = (await response.json()) as QuoteAPI;
-    setQuote({ content: result.content, author: result.author });
+    const data = (await response.json()) as QuoteAPI;
+    setQuote({ content: data.content, author: data.author });
   }
 
   function handleNewQuoteButtonClick(): void {

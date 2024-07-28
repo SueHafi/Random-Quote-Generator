@@ -19,6 +19,11 @@ app.get("/random", (req, res) => {
   res.json(quote);
 });
 
+app.post("/", (req, res)=> {
+ quotes.push({content: req.body.content, author: req.body.author});
+  res.json(req.body);
+})
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

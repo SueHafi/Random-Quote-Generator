@@ -1,6 +1,7 @@
 import { FormEvent, ChangeEvent, useState } from "react";
 import ButtonsContainer from "./ButtonsContainer";
 import "./AddQuote.css";
+import { APIHost } from "../utils";
 
 type QuoteProps = {
   onClick: () => void;
@@ -10,8 +11,18 @@ export default function AddQuote({ onClick }: QuoteProps) {
   const [userQuoteInput, setUserQuoteInput] = useState("");
   const [userAuthorInput, setUserAuthorInput] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ): Promise<void> {
     event.preventDefault();
+    await fetch(APIHost, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        content: userQuoteInput,
+        author: userAuthorInput,
+      }),
+    });
   }
 
   function handleQuoteChange(event: ChangeEvent<HTMLInputElement>): void {
