@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import express from "express";
 import cors from "cors";
+import { z, ZodError } from "zod";
 import quotes from "./quotes.json";
 
 const app = express();
@@ -22,28 +23,26 @@ app.get("/random", (req: Request, res: Response) => {
 });
 
 app.post("/", (req: Request, res: Response) => {
-  if (req.body.author === undefined) {
-    res.status(400);
-    res.json({
-      message: "Author is required",
-    });
+  const quoteSchema = z.object({
+    content: z.string().trim().min(1),
+    author: z.string().trim(),
+  });
+
+  let result: z.infer<typeof quoteSchema>;
+  try {
+    result = quoteSchema.parse(req.body);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      res.status(400);
+      res.json({
+        errorMessage: error.issues[0].message,
+        errorProperty: error.issues[0].path[0],
+      });
+    }
     return;
   }
-  if (typeof req.body.author !== "string") {
-    res.status(400);
-    res.json({
-      message: "Author must be a string",
-    });
-    return;
-  }
-  if (req.body.author.length === 0) {
-    res.status(400);
-    res.json({
-      message: "Author must not be empty",
-    });
-    return;
-  }
-  const { author, content } = req.body;
+
+  const { author, content } = result;
   const quote = { author, content };
   quotes.push(quote);
   res.json(req.body);

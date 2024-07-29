@@ -7,19 +7,6 @@ import AddQuote from "./components/AddQuote";
 import ButtonsContainer from "./components/ButtonsContainer";
 import { APIHost } from "./utils.ts";
 
-// const APIUrl = "https://api.quotable.io/random";
-
-// type QuoteAPI = {
-//   author: string;
-//   authorSlug: string;
-//   content: string;
-//   dateAdded: string;
-//   dateModified: string;
-//   length: number;
-//   tags: string[];
-//   _id: string;
-// };
-
 type QuoteAPI = {
   author: string;
   content: string;
@@ -34,7 +21,7 @@ function App() {
   const [isOnQuotePage, setIsOnQuotePage] = useState(true);
 
   async function fetchMyAPI(): Promise<void> {
-    const APIUrl = `${APIHost}/random`
+    const APIUrl = `${APIHost}/random`;
     const response = await fetch(APIUrl);
     const data = (await response.json()) as QuoteAPI;
     setQuote({ content: data.content, author: data.author });
