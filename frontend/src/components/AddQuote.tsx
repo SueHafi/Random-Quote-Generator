@@ -17,7 +17,7 @@ export default function AddQuote({ onClick }: QuoteProps) {
     event.preventDefault();
     await fetch(APIHost, {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         content: userQuoteInput,
         author: userAuthorInput,
