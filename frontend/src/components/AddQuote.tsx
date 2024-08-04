@@ -4,10 +4,10 @@ import "./AddQuote.css";
 import { APIHost } from "../utils";
 
 type QuoteProps = {
-  onClick: () => void;
+  changePage: () => void;
 };
 
-export default function AddQuote({ onClick }: QuoteProps) {
+export default function AddQuote({ changePage }: QuoteProps) {
   const [userQuoteInput, setUserQuoteInput] = useState("");
   const [userAuthorInput, setUserAuthorInput] = useState("");
 
@@ -15,14 +15,16 @@ export default function AddQuote({ onClick }: QuoteProps) {
     event: FormEvent<HTMLFormElement>
   ): Promise<void> {
     event.preventDefault();
+
     await fetch(APIHost, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         content: userQuoteInput,
-        author: userAuthorInput,
+        author: userAuthorInput || "Anonomous",
       }),
     });
+    changePage();
   }
 
   function handleQuoteChange(event: ChangeEvent<HTMLInputElement>): void {
@@ -70,7 +72,7 @@ export default function AddQuote({ onClick }: QuoteProps) {
         <button className="button" type="submit">
           Submit
         </button>
-        <button type="button" className="button" onClick={onClick}>
+        <button type="button" className="button" onClick={changePage}>
           Cancel
         </button>
       </ButtonsContainer>

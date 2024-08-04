@@ -46,7 +46,7 @@ function App() {
         />
       ) : (
         <div className="form-container">
-          <AddQuote onClick={handleChangePageButtonClick} />
+          <AddQuote changePage={handleChangePageButtonClick} />
         </div>
       )}
     </div>
