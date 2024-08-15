@@ -21,7 +21,7 @@ export default function AddQuote({ changePage }: QuoteProps) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         content: userQuoteInput,
-        author: userAuthorInput || "Anonomous",
+        author: userAuthorInput || "Anonymous",
       }),
     });
     changePage();
@@ -63,7 +63,7 @@ export default function AddQuote({ changePage }: QuoteProps) {
           id="author"
           name="author"
           type="text"
-          placeholder="Anonomous"
+          placeholder="Anonymous"
           onChange={handleAuthorChange}
           value={userAuthorInput}
         />
