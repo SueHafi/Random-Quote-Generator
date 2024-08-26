@@ -44,7 +44,7 @@ npm install
 ### Install packages for front end
 
 1. Open a terminal.
-2. Go to the back end directory:
+2. Go to the front end directory:
 
 ```
 cd ./frontend
